@@ -1,0 +1,110 @@
+<div *ngIf="area1==true">
+    <h1>
+        Registro de un nuevo Asegurado
+    </h1>
+    <div class="col-auto">
+        <button type="button" class="btn btn-primary mb-3" (onclick)="irRegistro()">Registro</button>
+    </div>
+</div>
+
+<div *ngIf="formularioRegistro==true">
+    <form>
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Nombres</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Apellidos</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Número de Identidad:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Alta:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Empresa:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Tipo Póliza:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Certificado:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <button type="button" class="btn btn-outline-success" (onclick)="guardarAsegurado()">Guardar</button>
+    </form>
+</div>
+
+<div *ngIf="area2==true">
+    <h1>
+        Consultar Asegurado
+    </h1>
+    <div class="col-auto">
+        <button type="button" class="btn btn-primary mb-3" (onclick)="irConsulta()">Consultar</button>
+    </div>
+</div>
+
+<div *ngIf="tabla==true">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Número de Identidad</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Fecha de Alta</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Póliza</th>
+            <th scope="col">Certificado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td><button type="button" class="btn btn-primary mb-3" (onclick)="irAsegurado()">Ver más</button></td>
+          </tr>
+        </tbody>
+    </table>
+</div>

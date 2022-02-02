@@ -1,0 +1,113 @@
+<h1>Información del Asegurado : dato del Server</h1>
+
+<div>
+
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Nombres</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="DB">
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Apellidos</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="DB">
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Identidad</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="DB">
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="DB">
+        </div>
+    </div>
+</div>
+
+<div *ngIf="dependientesActivos==true">
+    <h1>Dependientes Actuales del Asegurado</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Número de Identidad</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Fecha de Alta</th>
+            <th scope="col">Parentesco</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>Añadir Dependientes:</h2>
+<div class="col-auto">
+    <button type="button" class="btn btn-primary mb-3" (onclick)="mostrarFormulario()">Dependiente</button>
+</div>
+
+<div>
+    <h3>Añadir un nuevo dependiente:</h3>
+
+    <form>
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Nombres</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Apellidos</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Número de Identidad:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Parentesco:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Tipo Póliza:</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword">
+            </div>
+        </div>
+    
+        <button type="button" class="btn btn-outline-success" (onclick)="guardarDependiente()">Guardar</button>
+    </form>
+</div>
