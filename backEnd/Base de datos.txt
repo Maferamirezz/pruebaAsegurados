@@ -1,0 +1,18 @@
+/*
+CREAR DB MONGO
+*/
+
+use pruebaAseguradora
+
+db.createCollection("usuario")
+db.createCollection("asegurado")
+
+
+db.asegurados.insert({nombres: "Maria Fernanda", apellidos: "Ramirez Maldonado", fechaNacimiento: "28 noviembre 1998",numeroIdentidad: "0801199911656",fechaAlta: "12 enero 2023",poliza: 123456789,empresa: "UNAH",certificado: 123456,dependientes : []})
+
+db.usuarios.insert(
+{
+	email: "mramirez@unah.hn",
+	contrasenia: "12345678"
+}
+)
