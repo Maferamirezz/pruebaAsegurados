@@ -1,0 +1,127 @@
+<h1>Información del Asegurado: </h1>
+
+<button type="button" class="btn btn-primary mx-3" (click)="openPDF()">Generar PDF</button>
+
+<div class="card mb-3 mt-4 mx-5" id="tarjeta" style="max-width: 540px;">
+
+    <h4 style="text-align: center;">Seguro Medico</h4>
+
+    <div class="row">
+        <div class="col">
+            <div class="card-body row">
+                <b class="card-title col-sm-auto col-form-label">Asegurado</b>
+                <p class="card-text col-auto">{{asegurado.nombres}} {{asegurado.apellidos}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col">
+            <div class="card-body row">
+                <b class="card-title col-sm-auto col-form-label">Poliza</b>
+                <p class="card-text col-auto">{{asegurado.poliza}}</p>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card-body row">
+                <b class="card-title col-sm-auto col-form-label">Identidad</b>
+                <p class="card-text col-auto">{{asegurado.numeroIdentidad}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card-body row">
+                <b class="card-title col-sm-auto col-form-label">Empresa</b>
+                <p class="card-text col-auto">{{asegurado.empresa}}</p>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card-body row">
+                <b class="card-title col-sm-auto col-form-label">Certificado</b>
+                <p class="card-text col-auto">{{asegurado.certificado}}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="card-body row">
+            <b class="card-title col-sm-auto col-form-label">Fecha Alta</b>
+            <p class="card-text col-auto">{{asegurado.fechaAlta}}</p>
+        </div>
+    </div>
+
+</div>
+
+<div>
+    <h1>Dependientes Actuales del Asegurado</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Número de Identidad</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Parentesco</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dependiente of dependientes">
+                <th scope="row">{{dependiente.identidad}}</th>
+                <td>{{dependiente.nombres}}</td>
+                <td>{{dependiente.apellidos}}</td>
+                <td>{{dependiente.parentesco}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>Añadir Dependientes:</h2>
+<div class="col-auto">
+    <button type="button" class="btn btn-primary mb-3" (click)="mostrarFormulario()">Dependiente</button>
+</div>
+
+<div *ngIf="formularioDependiente==true" class="container-fluid">
+    <h3>Nuevo dependiente:</h3>
+
+    <form [formGroup]="registroDependiente">
+
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Nombres</label>
+            <div class="col-sm-10">
+                <input [ngClass]="{'is-invalid':f['nombres'].invalid && (f['nombres'].dirty || f['nombres'].touched)}" type="text" class="form-control" id="nombres" formControlName="nombres" required>
+                <div *ngIf="f['nombres'].invalid && (f['nombres'].dirty || f['nombres'].touched)" class="invalid-feedback">Por favor, ingrese nombres válidos</div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Apellidos</label>
+            <div class="col-sm-10">
+                <input [ngClass]="{'is-invalid':f['apellidos'].invalid && (f['apellidos'].dirty || f['apellidos'].touched)}" type="text" class="form-control" id="apellidos" formControlName="apellidos" required>
+                <div *ngIf="f['apellidos'].invalid && (f['apellidos'].dirty || f['apellidos'].touched)" class="invalid-feedback">Por favor, ingrese apellidos válidos</div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Identidad</label>
+            <div class="col-sm-10">
+                <input [ngClass]="{'is-invalid':f['identidad'].invalid && (f['identidad'].dirty || f['identidad'].touched)}" type="text" class="form-control" id="identidad" formControlName="identidad" required>
+                <div *ngIf="f['identidad'].invalid && (f['identidad'].dirty || f['identidad'].touched)" class="invalid-feedback">Por favor, ingrese la fecha de nacimiento</div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Parentesco</label>
+            <div class="col-sm-10">
+                <input [ngClass]="{'is-invalid':f['parentesco'].invalid && (f['parentesco'].dirty || f['parentesco'].touched)}" type="text" class="form-control" id="parentesco" formControlName="parentesco" required>
+                <div *ngIf="f['parentesco'].invalid && (f['parentesco'].dirty || f['parentesco'].touched)" class="invalid-feedback">Por favor, ingrese numero de identidad válido</div>
+            </div>
+        </div>
+
+        <button type="button" [disabled]="!registroDependiente.valid" class="btn btn-outline-success" (click)="guardarDependiente()">Guardar</button>
+    </form>
+</div>
