@@ -1,20 +1,26 @@
-<h1> 
+<h1 class="mb-3">
     Bienvenido al Sistema de Asegurados
 </h1>
 
-<div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword">
-    </div>
-  </div>
+<div class="container-fluid">
+    <form [formGroup]="login">
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input [ngClass]="{'is-invalid':f['email'].invalid && (f['email'].dirty || f['email'].touched)}" type="text" class="form-control" formControlName="email" id="email" required>
+                <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="invalid-feedback">Por favor, ingrese un usuario válido</div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input [ngClass]="{'is-invalid':f['contrasenia'].invalid && (f['contrasenia'].dirty || f['contrasenia'].touched)}" type="password" class="form-control" formControlName="contrasenia" id="inputPassword" required>
+                <div *ngIf="f['contrasenia'].invalid && (f['contrasenia'].dirty || f['contrasenia'].touched)" class="invalid-feedback">Por favor, ingrese una contraseña valida</div>
+            </div>
+        </div>
 
-  <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
-  </div>
+        <div class="col-auto">
+            <button type="button" [disabled]="!login.valid" class="btn btn-primary mb-3" (click)="ingresar()">Ingresar</button>
+        </div>
+    </form>
+</div>
