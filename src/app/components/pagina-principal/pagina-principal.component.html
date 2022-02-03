@@ -1,110 +1,119 @@
+<h1>Menu Principal</h1>
 <div *ngIf="area1==true">
-    <h1>
+    <h2>
         Registro de un nuevo Asegurado
-    </h1>
+    </h2>
     <div class="col-auto">
-        <button type="button" class="btn btn-primary mb-3" (onclick)="irRegistro()">Registro</button>
+        <button type="button" class="btn btn-primary mb-3" (click)="irRegistro()">Registro</button>
     </div>
 </div>
 
-<div *ngIf="formularioRegistro==true">
-    <form>
+<div class="container-fluid" *ngIf="formularioRegistro==true">
+    <form [formGroup]="registro">
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Nombres</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['nombres'].invalid && (f['nombres'].dirty || f['nombres'].touched)}" type="text" class="form-control" id="nombres" formControlName="nombres" required>
+                <div *ngIf="f['nombres'].invalid && (f['nombres'].dirty || f['nombres'].touched)" class="invalid-feedback">Por favor, ingrese nombres válidos</div>
             </div>
         </div>
-    
+
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Apellidos</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['apellidos'].invalid && (f['apellidos'].dirty || f['apellidos'].touched)}" type="text" class="form-control" id="apellidos" formControlName="apellidos" required>
+                <div *ngIf="f['apellidos'].invalid && (f['apellidos'].dirty || f['apellidos'].touched)" class="invalid-feedback">Por favor, ingrese apellidos válidos</div>
             </div>
         </div>
-    
+
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['nacimiento'].invalid && (f['nacimiento'].dirty || f['nacimiento'].touched)}" type="date" class="form-control" id="fechanacimiento" formControlName="nacimiento" required>
+                <div *ngIf="f['nacimiento'].invalid && (f['nacimiento'].dirty || f['nacimiento'].touched)" class="invalid-feedback">Por favor, ingrese la fecha de nacimiento</div>
             </div>
         </div>
-    
+
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Número de Identidad:</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['identidad'].invalid && (f['identidad'].dirty || f['identidad'].touched)}" type="number" class="form-control" id="identidad" formControlName="identidad" required>
+                <div *ngIf="f['identidad'].invalid && (f['identidad'].dirty || f['identidad'].touched)" class="invalid-feedback">Por favor, ingrese numero de identidad válido</div>
             </div>
         </div>
-    
+
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Alta:</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['fechaalta'].invalid && (f['fechaalta'].dirty || f['fechaalta'].touched)}" type="date" class="form-control" id="fechaalta" formControlName="fechaalta" required>
+                <div *ngIf="f['fechaalta'].invalid && (f['fechaalta'].dirty || f['fechaalta'].touched)" class="invalid-feedback">Por favor, ingrese la fecha del alta del seguro</div>
             </div>
         </div>
-    
+
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Empresa:</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['empresa'].invalid && (f['empresa'].dirty || f['empresa'].touched)}" type="text" class="form-control" id="empresa" formControlName="empresa" required>
+                <div *ngIf="f['empresa'].invalid && (f['empresa'].dirty || f['empresa'].touched)" class="invalid-feedback">Por favor, ingrese una empresa válida</div>
             </div>
         </div>
-    
+
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Tipo Póliza:</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['poliza'].invalid && (f['poliza'].dirty || f['poliza'].touched)}" type="text" class="form-control" id="poliza" formControlName="poliza" required>
+                <div *ngIf="f['poliza'].invalid && (f['poliza'].dirty || f['poliza'].touched)" class="invalid-feedback">Por favor, ingrese una poliza</div>
             </div>
         </div>
-    
+
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Certificado:</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword">
+                <input [ngClass]="{'is-invalid':f['certificado'].invalid && (f['certificado'].dirty || f['certificado'].touched)}" type="text" class="form-control" id="certificado" formControlName="certificado" required>
+                <div *ngIf="f['certificado'].invalid && (f['certificado'].dirty || f['certificado'].touched)" class="invalid-feedback">Por favor, ingrese un certificado válido</div>
             </div>
         </div>
-    
-        <button type="button" class="btn btn-outline-success" (onclick)="guardarAsegurado()">Guardar</button>
+
+        <button type="button" [disabled]="!registro.valid" class="btn btn-outline-success" (click)="guardarAsegurado()">Guardar</button>
     </form>
 </div>
 
 <div *ngIf="area2==true">
-    <h1>
+    <h2>
         Consultar Asegurado
-    </h1>
+    </h2>
     <div class="col-auto">
-        <button type="button" class="btn btn-primary mb-3" (onclick)="irConsulta()">Consultar</button>
+        <button type="button" class="btn btn-primary mb-3" (click)="irConsulta()">Consultar</button>
     </div>
 </div>
 
-<div *ngIf="tabla==true">
+<div class="container-fluid" *ngIf="tabla==true">
     <table class="table">
         <thead>
-          <tr>
-            <th scope="col">Número de Identidad</th>
-            <th scope="col">Nombres</th>
-            <th scope="col">Apellidos</th>
-            <th scope="col">Fecha Nacimiento</th>
-            <th scope="col">Fecha de Alta</th>
-            <th scope="col">Empresa</th>
-            <th scope="col">Póliza</th>
-            <th scope="col">Certificado</th>
-            <th></th>
-          </tr>
+            <tr>
+                <th scope="col">Número de Identidad</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Fecha de Alta</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Póliza</th>
+                <th scope="col">Certificado</th>
+                <th></th>
+            </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td><button type="button" class="btn btn-primary mb-3" (onclick)="irAsegurado()">Ver más</button></td>
-          </tr>
+        <tbody *ngFor="let asegurado of asegurados">
+            <tr>
+                <th scope="row">{{asegurado.numeroIdentidad}}</th>
+                <td>{{asegurado.nombres}}</td>
+                <td>{{asegurado.apellidos}}</td>
+                <td>{{asegurado.fechaNacimiento}}</td>
+                <td>{{asegurado.fechaAlta}}</td>
+                <td>{{asegurado.empresa}}</td>
+                <td>{{asegurado.poliza}}</td>
+                <td>{{asegurado.certificado}}</td>
+                <td><button type="button" class="btn btn-primary mb-3" (click)="irAsegurado(asegurado._id)">Ver más</button></td>
+            </tr>
         </tbody>
     </table>
 </div>
